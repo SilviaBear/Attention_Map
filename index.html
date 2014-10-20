@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Attention Map</title>
+<link rel="stylesheet" type="text/css" href="css/ph-button.css">
+<style>
+body {
+	background-image:url(background.png);
+}
+</style>
+</head>
+
+<body>
+<div id = "class" class = "ph-float" style = 'position: fixed; top: 40px; right: 200px' onclick = 'changeToTime()'>
+	<a href = '#' class = 'ph-button ph-btn-blue'>Class</a>
+</div>
+<div class="ph-container">
+  
+    <div id = "10" class="ph-float" style = 'position: fixed;top: 100px;right: 200px;' onclick = 'showImage(1)'>
+        <a id = '1' href = '#' class='ph-button ph-btn-green'>PHYS 100</a>
+    </div>
+  
+    <div id = "20" class="ph-float" style = 'position: fixed;top: 160px;right: 200px;' onclick = 'showImage(2)'>
+        <a id ='2' href = '#' class='ph-button ph-btn-green'>PHYS 101</a>
+    </div> 
+  
+    <div id = "30" class="ph-float" style = 'position: fixed;top: 220px;right: 200px;' onclick = 'showImage(3)'>
+        <a id='3' href = '#' class='ph-button ph-btn-green'>PHYS 211</a>
+    </div> 
+     <div id = "40" class="ph-float" style = 'position: fixed;top: 280px;right: 200px;' onclick = 'showImage(4)'>
+        <a id='4' href = '#' class='ph-button ph-btn-green'>PHYS 212</a>
+    </div>  
+     <div id = "50" class="ph-float" style = 'position: fixed;top: 340px;right: 200px;' onclick = 'showImage(5)'>
+        <a id='5' href = '#' class='ph-button ph-btn-green'>PHYS 213</a>
+    </div> 
+     <div id = "60" class="ph-float" style = 'position: fixed;top: 400px;right: 200px;' onclick = 'showImage(6)'>
+        <a id='6' href = '#' class='ph-button ph-btn-green'>PHYS 214</a>
+    </div>  
+      
+</div>    
+
+<script>
+function changeToTime(){
+	
+}
+
+function showImage(num){
+	refresh();
+	var element = document.getElementById(num.toString());
+	element.className = 'ph-button ph-btn-red';
+}
+
+function refresh(){
+	var element = document.getElementsByTagName('a');
+	for(i = 1; i < element.length; i++){
+		element[i].className = 'ph-button ph-btn-green';
+	}
+}
+</script>  
+<p id = 'test'></p> 
+</body>
+</html>
