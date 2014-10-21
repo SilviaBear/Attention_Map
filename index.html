@@ -1,20 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Attention Map</title>
 <link rel="stylesheet" type="text/css" href="css/ph-button.css">
+<link rel = "stylesheet" type = "text/css" href = "css/slider.css" />
 <style>
 body {
-	background-image:url(background.png);
+	background-image:url(image/background.png);
 }
 </style>
+<script>
+function time(value){
+	var time;
+	if(value < 40){
+		time = 9 + (value - 10)/10;
+		time = time.toString() + 'am';
+	}
+	else{
+		time = 1 + (value - 40)/10;
+		time = time.toString() + 'pm';
+	}
+	return time;
+}
+</script>
 </head>
-
-<body>
-<div id = "class" class = "ph-float" style = 'position: fixed; top: 40px; right: 200px' onclick = 'changeToTime()'>
-	<a href = '#' class = 'ph-button ph-btn-blue'>Class</a>
+<div id="slider" style = 'position: fixed; top: 450px; right: 600px'>
+	<input class="bar" type="range" id="rangeinput" min = "10" max = "60" value="10" step = "10" onchange="rangevalue.value=time(this.value)"/>
+	<span class="highlight"></span>
+	<output id="rangevalue">9am</output>
 </div>
+<body>
+<img src="image/Head.png" style = 'position: fixed; top: 0px; right: 650px'/>
+<img src="image/icon1.png" style = 'position: fixed; top: 505px; right: 1200px'/>
+<img src="image/icon2.png" style = 'position: fixed; top: 517px; right: 520px'/>
 <div class="ph-container">
   
     <div id = "10" class="ph-float" style = 'position: fixed;top: 100px;right: 200px;' onclick = 'showImage(1)'>
@@ -36,24 +54,22 @@ body {
     </div> 
      <div id = "60" class="ph-float" style = 'position: fixed;top: 400px;right: 200px;' onclick = 'showImage(6)'>
         <a id='6' href = '#' class='ph-button ph-btn-green'>PHYS 214</a>
-    </div>  
+    </div> 
       
 </div>    
 
-<script>
-function changeToTime(){
-	
-}
 
+<script>
+var currentClass = 1;
 function showImage(num){
 	refresh();
-	var element = document.getElementById(num.toString());
+	var element = document.getElementById((num - 1).toString());
 	element.className = 'ph-button ph-btn-red';
 }
 
 function refresh(){
 	var element = document.getElementsByTagName('a');
-	for(i = 1; i < element.length; i++){
+	for(i = 0; i < element.length; i++){
 		element[i].className = 'ph-button ph-btn-green';
 	}
 }
