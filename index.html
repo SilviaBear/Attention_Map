@@ -31,8 +31,8 @@ function time(value){
 </div>
 <body>
 <img src="image/Head.png" style = 'position: fixed; top: 0px; right: 650px'/>
-<img src="image/icon1.png" style = 'position: fixed; top: 505px; right: 1200px'/>
-<img src="image/icon2.png" style = 'position: fixed; top: 517px; right: 520px'/>
+<img src="image/icon1.png" style = 'position: fixed; top: 527px; right: 1205px; width: 50px;'/>
+<img src="image/icon2.png" style = 'position: fixed; top: 537px; right: 545px; width: 48px'/>
 <div class="ph-container">
   
     <div id = "10" class="ph-float" style = 'position: fixed;top: 100px;right: 200px;' onclick = 'showImage(1)'>
@@ -59,12 +59,19 @@ function time(value){
 </div>    
 
 
+
 <script>
 var currentClass = 1;
 function showImage(num){
 	refresh();
 	var element = document.getElementById((num - 1).toString());
 	element.className = 'ph-button ph-btn-red';
+	
+	if(num == 5)
+		document.getElementById('rangeinput').value= 40;
+	}
+	if(num == 4){
+		document.getElementById('rangeinput').value = 10;
 }
 
 function refresh(){
