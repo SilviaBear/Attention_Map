@@ -26,7 +26,24 @@ function time(value){
 </script>
 </head>
 <div id="slider" style = 'position: fixed; top: 460px; right: 600px'>
-	<input class="bar" type="range" id="rangeinput" min = "10" max = "60" value="10" step = "10" onchange="rangevalue.value=time(this.value)"/>
+	<input class="bar" type="range" id="rangeinput" min = "10" max = "60" value="10" step = "10" onchange="rangevalue.value=time(this.value);
+    if(this.value == 60 && document.getElementById('toggle').checked == 0){
+    	document.getElementById('main').src = 'image/PHYS212_3pm_L141.PNG';
+        refresh();
+        document.getElementById('4').className = 'ph-button ph-btn-red';
+    }
+    else if(this.value == 40 && document.getElementById('toggle').checked == 0){
+    	document.getElementById('main').src = 'image/PHYS212_1pm_L141.PNG';
+        refresh();
+        document.getElementById('4').className = 'ph-button ph-btn-red';
+    }
+    else if(this.value == 10 && document.getElementById('toggle').checked == 0){
+    	document.getElementById('main').src = 'image/PHYS211_10am_L141.PNG';
+        refresh();
+        document.getElementById('3').className = 'ph-button ph-btn-red';
+    }
+    else{
+    }"/>
 	<span class="highlight"></span>
 	<output id="rangevalue">9am</output>
 </div>
@@ -61,12 +78,12 @@ function time(value){
 </div>    
 <div class="switch" style = 'position:fixed; top: 540px; right: 400px'>
             <input id="toggle" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
-            <label for="toggle" data-on="MWF" data-off="TR"></label>
+            <label id = "label" for="toggle" data-on="MWF" data-off="TR"></label>
 </div>
 
 
 <script>
-var currentClass = 1;
+
 function showImage(num){
 	refresh();
 	var element = document.getElementById((num - 1).toString());
@@ -75,13 +92,16 @@ function showImage(num){
 	if(num == 5){
 		document.getElementById('rangeinput').value= 40;
 		document.getElementById("main").src = "image/PHYS212_1pm_L141.PNG";
-		document.getElementById("test").innerHTML = document.getElementById("toggle").content;
+		document.getElementById("toggle").checked = 0;
+		currentClass = num - 1;
 	}
 	if(num == 4){
 		document.getElementById('rangeinput').value = 10;
 	}
 }
 
+function changeTime(day, value){
+}
 function refresh(){
 	var element = document.getElementsByTagName('a');
 	for(i = 0; i < element.length; i++){
