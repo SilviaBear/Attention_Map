@@ -76,11 +76,13 @@ function time(value){
     </div> 
       
 </div>    
-<div class="switch" style = 'position:fixed; top: 540px; right: 400px'>
+<div class="switch" style = 'position:fixed; top: 540px; right: 350px'>
             <input id="toggle" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" onclick = 'autoPlay()'>
-            <label id = "label" for="toggle" data-on="Auto Display" data-off="Diplaying"></label>
+            <label id = "label" for="toggle" data-on="Displaying" data-off="Auto Display"></label>
 </div>
-
+<p id = "reg" style = ' font:Arial, Helvetica, sans-serif; font-size: 16px; position: fixed; top: 470px; right: 650px; visibility: visible; color:#fff'>
+register
+</p>
 
 <script>
 
@@ -108,9 +110,14 @@ function refresh(){
 	}
 }
 function autoPlay(){
+	document.getElementById("rangeinput").value = 10;
+	document.getElementById("main").src = "image/PHYS211_10am_L141.PNG";
 	var curIndex = 0;
-	var timeInterval = 4000;
-	setInterval(changeImage, timeInterval);
+	var timeInterval = 1000;
+	var id = setInterval(changeImage, timeInterval);
+	setTimeout(function(){window.clearInterval(id); document.getElementById('toggle').checked = 0;}, 3000);
+
+	
 	function changeImage(){
 	var imageTable = document.getElementById("main");
 	var arr = new Array();
@@ -123,8 +130,9 @@ function autoPlay(){
 	else{
 		curIndex += 1;
 	}
+	document.getElementById("rangeinput").value = 10 + 10*curIndex;
 	imageTable.src = arr[curIndex];
-	document.getElementById("bar").value = 10 + 10*(curIndex - 1);
+	
 }	
 }
 
