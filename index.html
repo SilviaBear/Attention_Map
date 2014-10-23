@@ -27,22 +27,41 @@ function time(value){
 </head>
 <div id="slider" style = 'position: fixed; top: 460px; right: 600px'>
 	<input class="bar" type="range" id="rangeinput" min = "10" max = "60" value="10" step = "10" onchange="rangevalue.value=time(this.value);
-    if(this.value == 60){
-    	document.getElementById('main').src = 'image/PHYS212_3pm_L141.PNG';
+    if(this.value == 10){
+    	document.getElementById('main').src = 'image/211x9.png';
         refresh();
         document.getElementById('4').className = 'ph-button ph-btn-red';
+        document.getElementById('reg').innerHTML = 'Registered: 292';
+    }
+    else if(this.value == 20){
+    	document.getElementById('main').src = 'image/211x10.png';
+        refresh();
+        document.getElementById('4').className = 'ph-button ph-btn-red';
+        document.getElementById('reg').innerHTML = 'Registered: 299'; 
+    }
+    else if(this.value == 30){
+    	document.getElementById('main').src = 'image/211x11.png';
+        refresh();
+        document.getElementById('4').className = 'ph-button ph-btn-red';
+        document.getElementById('reg').innerHTML = 'Registered: 292';
     }
     else if(this.value == 40){
-    	document.getElementById('main').src = 'image/PHYS212_1pm_L141.PNG';
+    document.getElementById('main').src = 'image/212x1.png';
         refresh();
-        document.getElementById('4').className = 'ph-button ph-btn-red';
+        document.getElementById('5').className = 'ph-button ph-btn-red';
+        document.getElementById('reg').innerHTML = 'Registered: 292';
     }
-    else if(this.value == 10){
-    	document.getElementById('main').src = 'image/PHYS211_10am_L141.PNG';
+    else if(this.value == 50){
+    document.getElementById('main').src = 'image/101x2.png';
         refresh();
         document.getElementById('3').className = 'ph-button ph-btn-red';
+        document.getElementById('reg').innerHTML = 'Registered: 274';
     }
     else{
+     document.getElementById('main').src = 'image/212x3.png';
+        refresh();
+        document.getElementById('5').className = 'ph-button ph-btn-red';
+        document.getElementById('reg').innerHTML = 'Registered: 280';
     }"/>
 	<span class="highlight"></span>
 	<output id="rangevalue">9am</output>
@@ -51,7 +70,7 @@ function time(value){
 <img src="image/Head.png" style = 'position: fixed; top: 0px; right: 657px'/>
 <img src="image/icon1.png" style = 'position: fixed; top: 537px; right: 1205px; width: 50px;'/>
 <img src="image/icon2.png" style = 'position: fixed; top: 547px; right: 545px; width: 48px'/>
-<img id = "main" src="image/PHYS211_10am_L141.PNG" style = 'position:fixed; top: 120px; right: 601px;'/>
+<img id = "main" src="image/cover.jpg" style = 'position:fixed; top: 120px; right: 601px;'/>
 <div class="ph-container">
   
     <div id = "10" class="ph-float" style = 'position: fixed;top: 100px;right: 250px;' onclick = 'showImage(1)'>
@@ -93,13 +112,20 @@ function showImage(num){
 	
 	if(num == 5){
 		document.getElementById('rangeinput').value= 40;
-		document.getElementById("main").src = "image/PHYS212_1pm_L141.PNG";
-		document.getElementById("toggle").checked = 0;
-		currentClass = num - 1;
+		document.getElementById("main").src = 'image/212x1.png';
+		document.getElementById('reg').innerHTML = 'Registered: 292';
 	}
-	if(num == 4){
+	else if(num == 4){
 		document.getElementById('rangeinput').value = 10;
+		document.getElementById("main").src = 'image/211x9.png';
+		document.getElementById('reg').innerHTML = 'Registered: 260';
 	}
+	else if(num == 3){
+		document.getElementById('rangeinput').value = 50;
+		document.getElementById('main').src = 'image/101x2.png';
+		document.getElementById('reg').innerHTML = 'Registered: 280';
+	}
+	else;
 }
 
 
@@ -111,19 +137,22 @@ function refresh(){
 }
 function autoPlay(){
 	document.getElementById("rangeinput").value = 10;
-	document.getElementById("main").src = "image/PHYS211_10am_L141.PNG";
+	document.getElementById("main").src = 'image/211x9.png';
 	var curIndex = 0;
-	var timeInterval = 1000;
+	var timeInterval = 2000;
 	var id = setInterval(changeImage, timeInterval);
-	setTimeout(function(){window.clearInterval(id); document.getElementById('toggle').checked = 0;}, 3000);
+	setTimeout(function(){window.clearInterval(id); document.getElementById('toggle').checked = 0;}, 12000);
 
 	
 	function changeImage(){
 	var imageTable = document.getElementById("main");
 	var arr = new Array();
-	arr[0] = "image/PHYS211_10am_L141.PNG";
-	arr[1] = "image/PHYS212_1pm_L141.PNG";
-	arr[2] = "image/PHYS212_3pm_L141.PNG";
+	arr[0] = 'image/211x9.png';
+	arr[1] = 'image/211x10.png';
+	arr[2] = 'image/211x11.png';
+	arr[3] = 'image/212x1.png';
+	arr[4] = 'image/101x2.png';
+	arr[5] = 'image/212x3.png';
 	if(curIndex == arr.length - 1){
 		curIndex = 0;
 	}
