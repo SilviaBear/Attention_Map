@@ -27,17 +27,17 @@ function time(value){
 </head>
 <div id="slider" style = 'position: fixed; top: 460px; right: 600px'>
 	<input class="bar" type="range" id="rangeinput" min = "10" max = "60" value="10" step = "10" onchange="rangevalue.value=time(this.value);
-    if(this.value == 60 && document.getElementById('toggle').checked == 0){
+    if(this.value == 60){
     	document.getElementById('main').src = 'image/PHYS212_3pm_L141.PNG';
         refresh();
         document.getElementById('4').className = 'ph-button ph-btn-red';
     }
-    else if(this.value == 40 && document.getElementById('toggle').checked == 0){
+    else if(this.value == 40){
     	document.getElementById('main').src = 'image/PHYS212_1pm_L141.PNG';
         refresh();
         document.getElementById('4').className = 'ph-button ph-btn-red';
     }
-    else if(this.value == 10 && document.getElementById('toggle').checked == 0){
+    else if(this.value == 10){
     	document.getElementById('main').src = 'image/PHYS211_10am_L141.PNG';
         refresh();
         document.getElementById('3').className = 'ph-button ph-btn-red';
@@ -77,8 +77,8 @@ function time(value){
       
 </div>    
 <div class="switch" style = 'position:fixed; top: 540px; right: 400px'>
-            <input id="toggle" class="cmn-toggle cmn-toggle-yes-no" type="checkbox">
-            <label id = "label" for="toggle" data-on="MWF" data-off="TR"></label>
+            <input id="toggle" class="cmn-toggle cmn-toggle-yes-no" type="checkbox" onclick = 'autoPlay()'>
+            <label id = "label" for="toggle" data-on="Auto Display" data-off="Diplaying"></label>
 </div>
 
 
@@ -100,14 +100,35 @@ function showImage(num){
 	}
 }
 
-function changeTime(day, value){
-}
+
 function refresh(){
 	var element = document.getElementsByTagName('a');
 	for(i = 0; i < element.length; i++){
 		element[i].className = 'ph-button ph-btn-green';
 	}
 }
+function autoPlay(){
+	var curIndex = 0;
+	var timeInterval = 4000;
+	setInterval(changeImage, timeInterval);
+	function changeImage(){
+	var imageTable = document.getElementById("main");
+	var arr = new Array();
+	arr[0] = "image/PHYS211_10am_L141.PNG";
+	arr[1] = "image/PHYS212_1pm_L141.PNG";
+	arr[2] = "image/PHYS212_3pm_L141.PNG";
+	if(curIndex == arr.length - 1){
+		curIndex = 0;
+	}
+	else{
+		curIndex += 1;
+	}
+	imageTable.src = arr[curIndex];
+	document.getElementById("bar").value = 10 + 10*(curIndex - 1);
+}	
+}
+
+
 </script>  
 <p id = 'test'></p> 
 </body>
